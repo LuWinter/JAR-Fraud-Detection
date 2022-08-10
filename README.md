@@ -39,11 +39,13 @@ This repository contains the data and code that was used in our paper published 
   >
   > The file “SAS coding” shows the process of merging fraud firm years with COMPUSTATA database and prepare necessary accounting features for our prediction models.
   >
-  > The file "run_RUSBoost28.m" is a Matlab program to replicate the results of our best fraud detection model RUSBoost in the paper. To run this program, two additional Matlab files are required: (1) the file "data_reader.m" for reading the data, and (2) the file "evaluate.m" for evaluating model performance.
+  > The file "run_RUSBoost.m" is the Matlab code to replicate the results of our fraud detection model RUSBoost. To run the code file, two additional Matlab files are required: (1) the file "data_reader.m" for reading the data, and (2) the file "evaluate.m" for evaluating model performance.
+  >
+  > The file "tune_RUSBoost.m" is the Matlab code to replicate the hyper-parameter tuning for our RUSBoost model. The number of learners/trees is tuned by using the traditional grid search approach. Specifically, the parameter space is manually specified as [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000, 2500, 3000]. For each hyper-parameter, the model is trained using the training period 1991-1999, and then evaluated in terms of AUC in the validating year 2001.
   >
   > We also made the final dataset publicly available in our Github repository (https://github.com/JarFraud/FraudDetection).
   >
-  > The file "uscecchini28.csv" is our final dataset which contains the fraud labels and feature variables. The variable name of our fraud label is "misstate" (1 denotes fraud, and 0 denotes non-fraud). The variable names of the 28 raw financial data items are: act, ap, at, ceq, che, cogs, csho, dlc, dltis, dltt, dp, ib, invt, ivao, ivst, lct, lt, ni, ppegt, pstk, re, rect, sale, sstk, txp, txt, xint, prcc_f. The variable names of the 14 financial ratios are: dch_wc, ch_rsst, dch_rec, dch_inv, soft_assets, ch_cs, ch_cm, ch_roa, issue, bm, dpi, reoa, EBIT, ch_fcf. The variable new_p_aaer is used for identifying serial frauds as described in Section 3.3 (see the code in “run_RUSBoost28.m” for more details).
+  > The file "data_FraudDetection_JAR2020.csv" is the final dataset which contains the fraud labels, feature variables, and related variables (e.g., fyear, gvkey, and p_aaer). The variable "misstate" is the fraud label (1 denotes fraud, and 0 denotes non-fraud). The 28 raw accounting data items are: act, ap, at, ceq, che, cogs, csho, dlc, dltis, dltt, dp, ib, invt, ivao, ivst, lct, lt, ni, ppegt, pstk, re, rect, sale, sstk, txp, txt, xint, prcc_f. The 14 financial ratios are: dch_wc, ch_rsst, dch_rec, dch_inv, soft_assets, ch_cs, ch_cm, ch_roa, issue, bm, dpi, reoa, EBIT, ch_fcf. The variable "p_aaer" is used for handling the serial fraud issue.
   >
   > The description of the 28 raw accounting variables are as follows:
   > + act -- Current Assets, Total
